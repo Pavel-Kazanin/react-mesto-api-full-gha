@@ -29,7 +29,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors({
   credentials: true,
   origin: true,
-  maxAge: 30,
+  optionsSuccessStatus: 200,
 }));
 
 /* const allowedCors = [
