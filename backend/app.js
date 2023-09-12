@@ -26,13 +26,7 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use(cors({
-  credentials: true,
-  origin: true,
-  optionsSuccessStatus: 200,
-}));
-
-/* const allowedCors = [
+const allowedCors = [
   'http://pavelkazaninmesto.nomoredomainsicu.ru',
   'https://pavelkazaninmesto.nomoredomainsicu.ru',
   'http://localhost:3000',
@@ -43,9 +37,15 @@ app.use((req, res, next) => {
   if (allowedCors.includes(origin)) {
     res.header('Access-Control-Allow-Origin', origin);
   }
+  const { method } = req;
+  const requestHeaders = req.headers['access-control-request-headers'];
+  if (method === 'OPTIONS') {
+    res.header('Access-Control-Allow-Headers', requestHeaders);
+    return res.end();
+  }
 
-  next();
-}); */
+  return next();
+});
 
 app.use(requestLogger);
 
