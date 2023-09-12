@@ -4,6 +4,7 @@ const helmet = require('helmet');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const { errors, celebrate, Joi } = require('celebrate');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 const auth = require('./middlewares/auth');
 const { createUser, login } = require('./controllers/users');
 const { urlRegex } = require('./utils/constants');
@@ -30,6 +31,8 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
+
+app.use(requestLogger);
 
 app.get('/crash-test', () => {
   setTimeout(() => {
@@ -65,6 +68,8 @@ app.use('/cards', require('./routes/cards'));
 app.use('*', (req, res, next) => {
   next(new NotFoundError('Страница не найдена'));
 });
+
+app.use(errorLogger);
 
 app.use(errors());
 
