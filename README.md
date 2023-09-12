@@ -9,7 +9,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 84.201.174.250
+IP 84.201.174.250
 
 Frontend https://pavelkazaninmesto.nomoredomainsicu.ru
 

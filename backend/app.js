@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const helmet = require('helmet');
+const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const { errors, celebrate, Joi } = require('celebrate');
@@ -21,16 +22,30 @@ mongoose.connect(DB_URL, {
 
 app.use(helmet());
 
+app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const corsOptions = {
-  origin: ['http://pavelkazaninmesto.nomoredomainsicu.ru', 'https://pavelkazaninmesto.nomoredomainsicu.ru', 'http://localhost:3000'],
-  optionsSuccessStatus: 200,
+app.use(cors({
   credentials: true,
-};
+  origin: true,
+  maxAge: 30,
+}));
 
-app.use(cors(corsOptions));
+/* const allowedCors = [
+  'http://pavelkazaninmesto.nomoredomainsicu.ru',
+  'https://pavelkazaninmesto.nomoredomainsicu.ru',
+  'http://localhost:3000',
+];
+
+app.use((req, res, next) => {
+  const { origin } = req.headers;
+  if (allowedCors.includes(origin)) {
+    res.header('Access-Control-Allow-Origin', origin);
+  }
+
+  next();
+}); */
 
 app.use(requestLogger);
 
