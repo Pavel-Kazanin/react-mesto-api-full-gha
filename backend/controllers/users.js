@@ -107,7 +107,21 @@ const login = (req, res, next) => {
     .then((user) => {
       const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'some-secret-key', { expiresIn: '7d' });
       res.cookie('token', token, { httpOnly: true });
-      res.send({ data: user });
+      const {
+        _id,
+        name,
+        about,
+        avatar,
+      } = user;
+      res.send({
+        data: {
+          _id,
+          name,
+          about,
+          avatar,
+          email,
+        },
+      });
     })
     .catch(next);
 };
