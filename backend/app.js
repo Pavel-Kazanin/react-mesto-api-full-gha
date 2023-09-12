@@ -24,7 +24,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const corsOptions = {
-  origin: ['http://pavelkazaninmesto.nomoredomainsicu.ru', 'https://pavelkazaninmesto.nomoredomainsicu.ru'],
+  origin: ['http://pavelkazaninmesto.nomoredomainsicu.ru', 'https://pavelkazaninmesto.nomoredomainsicu.ru', 'http://localhost:3000'],
   optionsSuccessStatus: 200,
   credentials: true,
 };
