@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
+const cors = require('cors');
 const mongoose = require('mongoose');
 const { errors, celebrate, Joi } = require('celebrate');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
@@ -25,27 +26,13 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const allowedCors = [
-  'http://pavelkazaninmesto.nomoredomainsicu.ru',
-  'https://pavelkazaninmesto.nomoredomainsicu.ru',
-  'http://localhost:3000',
-];
+const corsOptions = {
+  origin: ['http://pavelkazaninmesto.nomoredomainsicu.ru', 'https://pavelkazaninmesto.nomoredomainsicu.ru', 'http://localhost:3000'],
+  optionsSuccessStatus: 200,
+  credentials: true,
+};
 
-app.use((req, res, next) => {
-  const { origin } = req.headers;
-  if (allowedCors.includes(origin)) {
-    res.header('Access-Control-Allow-Origin', origin);
-    res.header('Access-Control-Allow-Credentials', 'true');
-  }
-  const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
-  const { method } = req;
-  if (method === 'OPTIONS') {
-    res.header('Access-Control-Allow-Headers', DEFAULT_ALLOWED_METHODS);
-    return res.end();
-  }
-
-  return next();
-});
+app.use(cors(corsOptions));
 
 app.use(requestLogger);
 
