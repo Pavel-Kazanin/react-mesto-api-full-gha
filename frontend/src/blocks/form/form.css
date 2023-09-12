@@ -1,0 +1,13 @@
+.form {
+  grid-area: form;
+  width: 100%;
+  padding: 29px 36px 37px 36px;
+  box-sizing: border-box;
+  font-size: 0;
+}
+
+@media screen and (max-width: 600px) {
+  .form {
+    padding: 25px 22px 25px 22px;
+  }
+}

@@ -1,0 +1,7 @@
+.card__description {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 25px 0 25px 0;
+}

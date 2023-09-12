@@ -1,0 +1,19 @@
+.form-auth__sign-in {
+  display: block;
+  padding: 0;
+  text-align: center;
+  margin: 0 auto;
+  color: white;
+  min-height: 17px;
+  margin: 15px 0 0 0;
+  font-size: 14px;
+  text-align: center;
+  font-weight: 400;
+  font-family: 'Inter', 'Arial', sans-serif;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.form-auth__sign-in:hover {
+  opacity: 0.6;
+}

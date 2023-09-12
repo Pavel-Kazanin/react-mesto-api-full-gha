@@ -1,0 +1,28 @@
+.info__name {
+  display: inline-block;
+  max-width: 336px;
+  font-size: 42px;
+  font-weight: 500;
+  line-height: 1.14;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  margin: 0;
+  vertical-align: middle;
+}
+
+@media screen and (max-width: 930px) {
+  .info__name {
+    margin-left: 42px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .info__name {
+    max-width: 200px;
+    font-size: 27px;
+    line-height: 1.21;
+    margin-left: 28px;
+    text-align: center;
+  }
+}

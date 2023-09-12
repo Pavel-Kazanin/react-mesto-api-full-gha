@@ -1,0 +1,5 @@
+.auth { 
+  min-height: calc(100vh - 82px - 159px);   
+  max-width: 358px;
+  margin: 0 auto 0 auto;
+}

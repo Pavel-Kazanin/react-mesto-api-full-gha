@@ -1,0 +1,26 @@
+.info__edit-button {
+  display: inline;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  box-sizing: border-box;
+  border: 1px solid #fff;
+  background: url(../../../images/edit.svg) 10px no-repeat #000;
+  background-position: center;
+  margin-left: 18px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  vertical-align: bottom;
+}
+
+.info__edit-button:hover {
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 480px) {
+  .info__edit-button {
+    width: 18px;
+    height: 18px;
+    margin-left: 10px;
+  }
+}

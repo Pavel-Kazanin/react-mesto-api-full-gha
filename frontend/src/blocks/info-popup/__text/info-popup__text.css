@@ -1,0 +1,11 @@
+.info-popup__text {
+  color: #000;
+  margin-top: 32px;
+  max-width: 358px;
+  text-align: center;
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+}
